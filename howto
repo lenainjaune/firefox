@@ -11,6 +11,17 @@ firefox --no-remote --profile /path/to/profile
 # Pour effacer certains éléments seulement de l’historique de la barre de recherche, cliquez sur le champ de la barre de recherche. Appuyez sur les touches ↓ et ↑ pour dérouler la liste des éléments. Pour effacer l’élément en surbrillance, appuyez sur Maj + Suppr 
 
 
+# http en préfixe (about:config)
+http[s] en préfixe visible
+browser.urlbar.trimURLs
+
+new tab avec page accueil
+# browser.newtab.url (plus supporté depuis ff41 : https://bugzilla.mozilla.org/show_bug.cgi?id=1118285)
+Solution de remplacement, ajouter le module new-tab-override (supporté par Mozilla) : https://addons.mozilla.org/fr/firefox/addon/new-tab-override/
+
+
+
+
 # Modules utiles
 
 Traducteur:
