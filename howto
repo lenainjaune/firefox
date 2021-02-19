@@ -1,0 +1,108 @@
+# new instance
+# nota : à partir de ff v67+ on ne peut plus utiliser un profile créé avec une autre installation (voir dessous pour contourner)
+
+firefox --no-remote -P [ profile_name_previously_created ]
+ou
+firefox --no-remote --profile /path/to/profile
+
+
+# Effacer les recherches récentes de la barre de recherche / Effacer les éléments individuellement
+# https://support.mozilla.org/fr/kb/effacer-recherches-recentes-barre-recherche#w_effacer-les-elements-individuellement
+# Pour effacer certains éléments seulement de l’historique de la barre de recherche, cliquez sur le champ de la barre de recherche. Appuyez sur les touches ↓ et ↑ pour dérouler la liste des éléments. Pour effacer l’élément en surbrillance, appuyez sur Maj + Suppr 
+
+
+# Modules utiles
+
+Traducteur:
+Google™ Translator par Andy Portmen
+Google™ Translator	0.5.9	true	{059cddf1-f66c-4b63-a79a-c35ac7e6ac65}
+https://addons.mozilla.org/fr/firefox/addon/google-translator-webextension/
+a handy multi-language translator built on top of Google translate.
+=> marche aussi par sélection
+
+Simple Tab Groups
+Simple Tab Groups	4.5	true	simple-tab-groups@drive4ik
+Permet de grouper les pages par thème
+https://addons.mozilla.org/fr/firefox/addon/simple-tab-groups/
+Permet de grouper ses onglets actifs (poussé dans ses limites gère mal au delà de 1000 onglet ? A revoir)
+
+Imagus (ou autre)
+Imagus	0.9.8.74	true	{00000f2a-7cde-4f20-83ed-434fcb420d71}
+Elargir vignette au survol
+
+Bookmark search plus 2
+Bookmark search plus 2	2.0.75	true	bookmarksearchplus2@aafn.org
+Recherche dans les bookmarks et leur localisation
+
+uBlock Origin
+uBlock Origin	1.26.0	true	uBlock0@raymondhill.net
+Bloque les publicités par défaut ; parfois il est obligatoire de désactiver pour un site
+
+Regex Search (ou un autre)
+Regex Search	1.0.17	true	{cb08faed-9460-474a-ba0b-d98b13b5e001}
+Permet des recherches poussées avec les regexps
+Peu utilisé, à revoir
+
+Notes by Firefox
+Notes by Firefox	4.3.5	true	notes@mozilla.com
+Notes dans le navigateur persistantes (peu utilisé)
+
+# new profile
+/home/user/Téléchargements/firefox-62/firefox -no-remote -CreateProfile toto
+/home/user/Téléchargements/firefox-62/firefox -no-remote -P toto
+
+
+
+
+# Prevent auto-update
+
+# Before the 1st run (from the Firefox binary folder)
+# trouvé par l'essai car rien d'autre ne fonctionne :D !!!
+mkdir updates ; chmod 0 updates
+
+# In an installed version 
+# https://www.technipages.com/enable-disable-automatic-updates-in-firefox
+# about:config
+# app.update.auto = false
+
+
+
+
+
+
+# installer n'importe quelle version de FF sous Linux
+# firefox portable linux 
+
+# https://ubuntuforums.org/showthread.php?t=1907045
+
+# get : https://ftp.mozilla.org/pub/firefox/releases/
+wget https://ftp.mozilla.org/pub/firefox/releases/62.0/linux-x86_64/fr/firefox-62.0.tar.bz2
+tar xjf firefox-62.0.tar.bz2
+mv firefox firefox-62
+
+
+
+# Naviguer entre les derniers onglets visités
+# Switching back to last tab
+# https://superuser.com/questions/290704/switching-back-to-last-tab-on-firefox#392376
+
+Switching back to last tab on Firefox:
+
+    browse about:config
+    find browser.ctrlTab.previews
+    set true
+
+Done! :)
+
+You can switch back to the last tab via Ctrl + Tab.
+# OU
+about:config > browser.ctrlTab.previews;true
+
+
+
+
+
+# A partir de ff v67+ quand on essaye d'ouvrir un profil créé depuis une autre installation de ff (et ce même avec des versions d'application identiques) on a ce message d'erreur :
+#"You've launched an older version of Firefox\nUsing an older version of Firefox can corrupt bookmarks and browsing history already saved to an existing Firefox profile. To protect your information, create a new profile for this installation of Firefox."
+# https://www.askvg.com/fix-all-bookmarks-add-ons-and-settings-lost-in-mozilla-firefox/
+# contourner : le fichier compatibility.ini du profil et supprimer ligne "LastVersion" (https://www.reddit.com/r/firefox/comments/brjj82/firefox_67_thinks_its_an_old_version_and_wont/eoftfx8/)
