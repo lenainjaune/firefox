@@ -58,6 +58,11 @@ Notes by Firefox
 Notes by Firefox	4.3.5	true	notes@mozilla.com
 Notes dans le navigateur persistantes (peu utilisé)
 
+Clear cache (one button)
+https://addons.mozilla.org/fr/firefox/addon/clearcache/ (supporté par Mozilla)
+
+
+
 # new profile
 /home/user/Téléchargements/firefox-62/firefox -no-remote -CreateProfile toto
 /home/user/Téléchargements/firefox-62/firefox -no-remote -P toto
