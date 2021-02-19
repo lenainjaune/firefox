@@ -77,8 +77,8 @@ mkdir updates ; chmod 0 updates
 # app.update.auto = false
 
 
-
-
+# safe mode
+firefox -safe-mode
 
 
 # installer n'importe quelle version de FF sous Linux
