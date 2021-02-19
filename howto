@@ -90,6 +90,9 @@ mkdir updates ; chmod 0 updates
 wget https://ftp.mozilla.org/pub/firefox/releases/62.0/linux-x86_64/fr/firefox-62.0.tar.bz2
 tar xjf firefox-62.0.tar.bz2
 mv firefox firefox-62
+firefox-62/firefox -no-remote -CreateProfile toto
+firefox-62/firefox -no-remote -P toto
+# ou : firefox-62/firefox -no-remote -profile $HOME/.mozilla/firefox/mzio7s0c.toto/
 
 
 
