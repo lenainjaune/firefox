@@ -1,5 +1,5 @@
 # new instance
-# nota : à partir de ff v67+ on ne peut plus utiliser un profile créé avec une autre installation (voir dessous pour contourner)
+# nota : à partir de ff v67+ on ne peut plus utiliser un profile créé avec une autre installation (voir [1] pour contourner)
 
 firefox --no-remote -P [ profile_name_previously_created ]
 ou
@@ -111,9 +111,16 @@ about:config > browser.ctrlTab.previews;true
 
 
 
+Empecher audio et video de demarrer tout seul
+https://support.mozilla.org/fr/kb/autoriser-bloquer-lecture-automatique-medias
 
 
-# A partir de ff v67+ quand on essaye d'ouvrir un profil créé depuis une autre installation de ff (et ce même avec des versions d'application identiques) on a ce message d'erreur :
-#"You've launched an older version of Firefox\nUsing an older version of Firefox can corrupt bookmarks and browsing history already saved to an existing Firefox profile. To protect your information, create a new profile for this installation of Firefox."
-# https://www.askvg.com/fix-all-bookmarks-add-ons-and-settings-lost-in-mozilla-firefox/
-# contourner : le fichier compatibility.ini du profil et supprimer ligne "LastVersion" (https://www.reddit.com/r/firefox/comments/brjj82/firefox_67_thinks_its_an_old_version_and_wont/eoftfx8/)
+
+
+
+
+[1]
+A partir de ff v67+ quand on essaye d'ouvrir un profil créé depuis une autre installation de ff (et ce même avec des versions d'application identiques) on a ce message d'erreur :
+"You've launched an older version of Firefox\nUsing an older version of Firefox can corrupt bookmarks and browsing history already saved to an existing Firefox profile. To protect your information, create a new profile for this installation of Firefox."
+https://www.askvg.com/fix-all-bookmarks-add-ons-and-settings-lost-in-mozilla-firefox/
+contourner : le fichier compatibility.ini du profil et supprimer ligne "LastVersion" (https://www.reddit.com/r/firefox/comments/brjj82/firefox_67_thinks_its_an_old_version_and_wont/eoftfx8/)
