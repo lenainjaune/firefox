@@ -75,6 +75,7 @@ https://addons.mozilla.org/fr/firefox/addon/clearcache/ (supporté par Mozilla)
 # Before the 1st run (from the Firefox binary folder)
 # trouvé par l'essai car rien d'autre ne fonctionne :D !!!
 mkdir updates ; chmod 0 updates
+# ou bien : <profile_dir>/pref.js modifier user_pref("app.update.auto", false);
 
 # In an installed version 
 # https://www.technipages.com/enable-disable-automatic-updates-in-firefox
