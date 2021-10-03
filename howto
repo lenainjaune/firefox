@@ -48,7 +48,7 @@ Recherche dans les bookmarks et leur localisation
 uBlock Origin
 uBlock Origin	1.26.0	true	uBlock0@raymondhill.net
 Bloque les publicités par défaut ; parfois il est obligatoire de désactiver pour un site
-Voir aussi les règles /media/lnj/DATA/projets/ublock_origin/ublock_filter_rules.txt
+Voir aussi les règles ici : https://github.com/lenainjaune/ublock/blob/main/rules
 
 Regex Search (ou un autre)
 Regex Search	1.0.17	true	{cb08faed-9460-474a-ba0b-d98b13b5e001}
