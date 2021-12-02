@@ -25,11 +25,17 @@ Solution de remplacement, ajouter le module new-tab-override (supporté par Mozi
 # Modules utiles
 
 Traducteur:
+To Google Translate par Juan Escobar
+To Google Translate	extension	4.2.0	true	jid1-93WyvpgvxzGATw@jetpack
+https://github.com/itsecurityco/to-google-translate
+=> permet de traduire une sélection ou la page entière dans une nouvelle fenêtre (mais pas dans la même)
+
 Google™ Translator par Andy Portmen
 Google™ Translator	0.5.9	true	{059cddf1-f66c-4b63-a79a-c35ac7e6ac65}
 https://addons.mozilla.org/fr/firefox/addon/google-translator-webextension/
 a handy multi-language translator built on top of Google translate.
 => marche aussi par sélection
+=> n'est pas ou plus supporté partout !
 
 Simple Tab Groups
 Simple Tab Groups	4.5	true	simple-tab-groups@drive4ik
@@ -61,6 +67,10 @@ Notes dans le navigateur persistantes (peu utilisé)
 
 Clear cache (one button)
 https://addons.mozilla.org/fr/firefox/addon/clearcache/ (supporté par Mozilla)
+
+SingleFile par gildas
+SingleFile	extension	1.19.22	true	{531906d3-e22f-4a6c-a102-8057b88a1a63}
+Description : sauvegarder une page complète (avec le CSS, les images, etc.) dans un simple fichier HTML.
 
 
 
