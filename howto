@@ -61,7 +61,8 @@ Voir aussi les règles ici : https://github.com/lenainjaune/ublock/blob/main/rul
 Regex Search (ou un autre)
 Regex Search	1.0.17	true	{cb08faed-9460-474a-ba0b-d98b13b5e001}
 Permet des recherches poussées avec les regexps
-Peu utilisé, à revoir
+https://addons.mozilla.org/en-US/firefox/addon/regexsearch/
+Peu utilisé, non supporté par FF, à revoir
 
 Notes by Firefox
 Notes by Firefox	4.3.5	true	notes@mozilla.com
