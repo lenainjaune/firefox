@@ -58,6 +58,13 @@ uBlock Origin	1.26.0	true	uBlock0@raymondhill.net
 Bloque les publicités par défaut ; parfois il est obligatoire de désactiver pour un site
 Voir aussi les règles ici : https://github.com/lenainjaune/ublock/blob/main/rules
 
+find+ | Regex Find-in-Page Tool
+find+ | Regex Find-in-Page Tool 2.2.1	true	{6fa42eda-38ca-4126-96d5-3163f0de6900}
+Permet de rechercher dans une page par regex
+https://github.com/brandon1024/find/
+Brandon Richardson
+
+
 Regex Search (ou un autre)
 Regex Search	1.0.17	true	{cb08faed-9460-474a-ba0b-d98b13b5e001}
 Permet des recherches poussées avec les regexps
