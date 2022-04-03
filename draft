@@ -1,0 +1,3 @@
+# Mots de passe pour les sous domaines d'un site confondus (comme sur NAS avec admin)
+https://bugzilla.mozilla.org/show_bug.cgi?id=1601558
+The new 71.0 featue "Firefox now suggests saved logins from other subdomains of a site" is anoying in a corporate environment, since MOST of my logins are from our internal corporate domain.
