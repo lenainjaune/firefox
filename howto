@@ -127,19 +127,10 @@ firefox-62/firefox -no-remote -P toto
 
 # Naviguer entre les derniers onglets visités
 # Switching back to last tab
-# https://superuser.com/questions/290704/switching-back-to-last-tab-on-firefox#392376
+# https://superuser.com/questions/290704/switching-back-to-last-tab-on-firefox/1278803#1278803
 
-Switching back to last tab on Firefox:
+Open Options panel, go to General tab the tick the "Ctrl+Tab cycles through tabs in recently used order"
 
-    browse about:config
-    find browser.ctrlTab.previews
-    set true
-
-Done! :)
-
-You can switch back to the last tab via Ctrl + Tab.
-# OU
-about:config > browser.ctrlTab.previews;true
 
 
 
