@@ -132,6 +132,7 @@ mv firefox $n
 # Fermer toutes les éventuelles instances de FF en cours et faire une copie du profil en cours
 $n/firefox -no-remote -P
 # Attention : si on souhaite utiliser un profil existant, on ne pourra (officiellement) PAS l'utiliser à nouveau avec une version FF antérieure (c'est pourquoi il faut faire une copie avant)
+# Officieusement : on peut utiliser #--allow-downgrade# (attention : utiliser une copie du profil car il y a un risque de données incohérentes, à priori) ([source](https://bugzilla.mozilla.org/show_bug.cgi?id=1617722#c5))
 
 
 
