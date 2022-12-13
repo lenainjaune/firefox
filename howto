@@ -123,9 +123,8 @@ firefox-62/firefox -no-remote -CreateProfile toto
 firefox-62/firefox -no-remote -P toto
 # ou : firefox-62/firefox -no-remote -profile $HOME/.mozilla/firefox/mzio7s0c.toto/
 
-# Automatisation pour DL la dernière version de FF
-wget "https://ftp.mozilla.org$( wget --no-check-certificate -qO- "https://ftp.mozilla.org$( wget --no-check-certificate -qO- https://ftp.mozilla.org/pub/firefox/releases/ | grep -Eo "href=\"/pub/firefox/releases/[0-9.]+/\"" | grep -Eo "/.+/" | sort -uV | tail -n -1 )linux-x86_64/fr/" | grep -Eo "href=\"/pub.+\.tar\.bz2\"" | grep -Eo "/.+\.tar\.bz2" )"
-
+# Automatisation pour DL la dernière version de FF (NON ESR, NON beta, etc.)
+R=https://ftp.mozilla.org ; NC=--no-check-certificate ; wget $R$( wget $NC -qO- $R$( wget $NC -qO- $R/pub/firefox/releases/ | grep -Eo "href=\"/pub.+[0-9.]+/\"" | grep -Eo "/.+/" | sort -uV | tail -n -1 )linux-x86_64/fr/ | grep -Eo "href=\"/pub.+\.tar\.bz2\"" | grep -Eo "/.+\.tar\.bz2" )
 
 
 
