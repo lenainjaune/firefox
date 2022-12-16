@@ -153,6 +153,40 @@ https://support.mozilla.org/fr/kb/autoriser-bloquer-lecture-automatique-medias
 
 
 
+Désactiver la vidéo (restauration de vieu PC) :
+# Désactiver toutes les vidéos depuis FF (force à utiliser mpv) : 
+#  https://www-journeybytes-com.translate.goog/permanently-block-videos-firefox/?_x_tr_sl=auto&_x_tr_tl=fr&_x_tr_hl=fr
+# MEGA astuce : rendre ce réglage global et non modifiable
+#  https://superuser.com/questions/823530/change-some-default-settings-for-firefox-globally/826219#826219
+#
+# depuis dossier installation du binaire
+# => dans mon cas ça donne : /usr/lib/firefox-esr car "which firefox" : script firefox pointe vers firefox-esr qui pointe vers /usr/lib/firefox-esr/firefox-esr)
+#
+# 1 - un nouveau fichier local-settings.js dans le sous dossier defaults/pref 
+root@host:~# cat /usr/lib/firefox-esr/defaults/pref/local-settings.js
+pref("general.config.obscure_value", 0);
+pref("general.config.filename", "mozilla.cfg");
+#
+# 2 - un nouveau fichier de configuration (lockPref empêche modification, il y a aussi : defaultPref et pref - voir lien pour plus d'explications)
+root@host:~# cat /usr/lib/firefox-esr/mozilla.cfg
+//
+lockPref("media.mp4.enabled", false);
+lockPref("media.webm.enabled", false);
+lockPref("media.mediasource.enabled", false);
+lockPref("media.mediasource.mp4.enabled", false);
+lockPref("media.mediasource.webm.enabled", false);
+lockPref("media.rdd-ffvpx.enabled", false);
+
+=> tout profil qui utilise ce binaire se verra affecter ces réglages
+
+# Il est à priori possible de rendre l'addon global lui aussi (et ses réglages ?)
+
+
+
+
+
+
+
 [1]
 A partir de ff v67+ quand on essaye d'ouvrir un profil créé depuis une autre installation de ff (et ce même avec des versions d'application identiques) on a ce message d'erreur :
 "You've launched an older version of Firefox\nUsing an older version of Firefox can corrupt bookmarks and browsing history already saved to an existing Firefox profile. To protect your information, create a new profile for this installation of Firefox."
