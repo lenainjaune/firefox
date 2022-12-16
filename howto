@@ -186,6 +186,10 @@ lockPref("media.rdd-ffvpx.enabled", false);
 
 
 
+Rendre réglage global et non modifiable (voir Désactiver la vidéo - dessus)
+
+
+
 
 [1]
 A partir de ff v67+ quand on essaye d'ouvrir un profil créé depuis une autre installation de ff (et ce même avec des versions d'application identiques) on a ce message d'erreur :
