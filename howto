@@ -127,10 +127,10 @@ firefox-62/firefox -no-remote -P toto
 R=https://ftp.mozilla.org ; NC=--no-check-certificate ; wget $R$( wget $NC -qO- $R$( wget $NC -qO- $R/pub/firefox/releases/ | grep -Eo "href=\"/pub.+/[0-9.]+/\"" | grep -Eo "/.+/" | sort -uV | tail -n -1 )linux-x86_64/fr/ | grep -Eo "href=\"/pub.+\.tar\.bz2\"" | grep -Eo "/.+\.tar\.bz2" )
 n=$( basename $( ls -1 firefox-*.tar.bz2 | sort -V | tail -n -1 ) ".tar.bz2" )
 tar xjf $n.tar.bz2
-rm tar xjf $n.tar.bz2
+rm $n.tar.bz2
 mv firefox $n
 # Fermer toutes les éventuelles instances de FF en cours et faire une copie du profil en cours
-$n/firefox -no-remote -P
+./$n/firefox -no-remote -P
 # Attention : si on souhaite utiliser un profil existant, on ne pourra (officiellement) PAS l'utiliser à nouveau avec une version FF antérieure (c'est pourquoi il faut faire une copie avant)
 # Officieusement : on peut utiliser #--allow-downgrade# (attention : utiliser une copie du profil car il y a un risque de données incohérentes, à priori) ([source](https://bugzilla.mozilla.org/show_bug.cgi?id=1617722#c5))
 
