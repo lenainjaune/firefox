@@ -92,18 +92,15 @@ Description : sauvegarder une page complète (avec le CSS, les images, etc.) dan
 
 
 # Prevent auto-update
-
-# Before the 1st run (from the Firefox binary folder)
-# trouvé par l'essai car rien d'autre ne fonctionne :D !!!
-# Linux
-mkdir updates ; chmod 0 updates
-# Windows
-# Créer d'abord un profil (voir dessus) et modifier <profil_dir>/pref.js en ajoutant : user_pref("app.update.auto", false);
-
-# Si Firefox est déjà installé
 # https://www.technipages.com/enable-disable-automatic-updates-in-firefox
-# about:config
-# app.update.auto = false
+# Réglage about:config : lockPref("app.update.auto", false);
+
+# trouvé par l'essai car rien d'autre ne fonctionne :D !!!
+FF_ROOT=<ff_binary_folder>
+mkdir "${FF_ROOT}/updates" ; chmod 0 "${FF_ROOT}/updates"
+# Par profil : créer d'abord un profil (voir dessus) et modifier <profil_dir>/pref.js en ajoutant : user_pref("app.update.auto", false);
+# Globalement : créer d'abord "${FF_ROOT}/defaults/pref/local-settings.js" (voir dessous "Désactiver la vidéo")
+echo 'lockPref("app.update.auto", false);' >> "${FF_ROOT}/mozilla.cfg"
 
 
 # safe mode
@@ -153,7 +150,7 @@ https://support.mozilla.org/fr/kb/autoriser-bloquer-lecture-automatique-medias
 
 
 
-Désactiver la vidéo (restauration de vieu PC) :
+Désactiver la vidéo (restauration de vieux PC) :
 # Désactiver toutes les vidéos depuis FF (force à utiliser mpv) : 
 #  https://www-journeybytes-com.translate.goog/permanently-block-videos-firefox/?_x_tr_sl=auto&_x_tr_tl=fr&_x_tr_hl=fr
 # MEGA astuce : rendre ce réglage global et non modifiable
