@@ -49,7 +49,7 @@ FI
 # basé sur : https://unix.stackexchange.com/questions/190258/how-to-add-a-thunderbird-addon-globally/220804#220804
 root@host:~# wget https://github.com/gorhill/uBlock/releases/download/1.46.1b3/uBlock0_1.46.1b3.firefox.signed.xpi
 root@host:~# D=$( mktemp -d )
-root@host:~# f=$( ls -1 "$PWD"/uBlock0_* | tail -1 )
+root@host:~# f=$( ls -1 "$PWD"/uBlock0_*.xpi | tail -1 )
 root@host:~# unzip "$f" -d $D
 root@host:~# ID=$( \
 openssl asn1parse -inform DER -in $D/META-INF/mozilla.rsa \
