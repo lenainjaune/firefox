@@ -1,0 +1,128 @@
+lien qui pour le moment donne les dossiers cibles qui fonctionnent
+https://extensionworkshop.com/documentation/publish/distribute-sideloading/
+
+
+
+root@host:~# #ARCH=x86_64
+root@host:~# ARCH=i686
+
+
+IF on veut installer la dernière version de FF NON intégrée au système
+
+FF_ROOT=/data/noinstall/firefox
+
+# Création du dossier des FF
+root@host:~# mkdir -p "$FF_ROOT"
+
+# Installation de FF PAS intégré au système (copie github)
+root@host:~# R=https://ftp.mozilla.org ; NC=--no-check-certificate ; wget $R$( wget $NC -qO- $R$( wget $NC -qO- $R/pub/firefox/releases/ | grep -Eo "href=\"/pub.+/[0-9.]+/\"" | grep -Eo "/.+/" | sort -uV | tail -n -1 )linux-$ARCH/fr/ | grep -Eo "href=\"/pub.+\.tar\.bz2\"" | grep -Eo "/.+\.tar\.bz2" )
+root@host:~# n=$( basename $( ls -1 firefox-*.tar.bz2 | sort -V | tail -n -1 ) ".tar.bz2" )
+root@host:~# tar xjf $n.tar.bz2
+root@host:~# rm $n.tar.bz2
+root@host:~# mv firefox $n
+
+root@host:~# FF="$FF_ROOT/$n"
+root@host:~# FF_ADDON="$FF/distribution/extensions"
+
+# Installation et configuration des addons
+root@host:~# mkdir -p "$FF_ADDON"
+
+ELSE
+
+root@host:~# FF="/usr/lib/firefox-esr"
+root@host:~# FF_ADDON="/usr/lib/mozilla/extensions/\
+{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+
+FI
+
+
+
+
+
+# Télécharger une version de addon uBlock
+# basé sur : https://unix.stackexchange.com/questions/190258/how-to-add-a-thunderbird-addon-globally/220804#220804
+root@host:~# wget https://github.com/gorhill/uBlock/releases/download/1.46.1b3/uBlock0_1.46.1b3.firefox.signed.xpi
+root@host:~# D=$( mktemp -d )
+root@host:~# f=$( ls -1 "$PWD"/uBlock0_* | tail -1 )
+root@host:~# unzip "$f" -d $D
+root@host:~# ID=$( \
+openssl asn1parse -inform DER -in $D/META-INF/mozilla.rsa \
+| grep -A 1 commonName | grep -E '{|@' | cut -d ':' -f 4 \
+)
+root@host:~# echo $ID
+uBlock0@raymondhill.net
+#
+# Préparer pour installation pour le prochain démarrage de FF
+root@host:~# cp "$f" "${FF_ADDON}"/$ID.xpi
+#
+# Préparer configuration pour le prochain démarrage de FF
+root@host:~# cat "$FF/distribution/policies.json"
+{
+ "policies": {
+   "BlockAboutConfig": true,
+   "3rdparty": {
+      "Extensions": {
+        "uBlock0@raymondhill.net": {
+          "__comment": "Define uBlock Origin filter's rules",
+          "toOverwrite": {
+            "filters": [
+              "! To add to ublock rules",
+              "! Comment supprimer la popup Connectez-vous à Youtube",
+              "! https://www.malekal.com/comment-supprimer-la-popup-connectez-vous-a-youtube/",
+              "www.youtube.com###dialog",
+              "||www.gstatic.com/youtube/img/promos/growth/dmod_si_horizontal_ver1_240x400.png$image",
+              "www.youtube.com##opened",
+              "www.youtube.com##.opened",
+              "",
+              "! remove 'more videos' popup by youtube #325",
+              "! https://github.com/udacity/fcnd-issue-reports/issues/325#issuecomment-431747308",
+              "##.ytp-pause-overlay",
+              "www.youtube.com##.ytp-scroll-min.ytp-pause-overlay"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+# Configurer la désactivation des vidéos
+# https://www-journeybytes-com.translate.goog/permanently-block-videos-firefox/?_x_tr_sl=auto&_x_tr_tl=fr&_x_tr_hl=fr
+# MEGA astuce : rendre ce réglage global et non modifiable
+# https://superuser.com/questions/823530/change-some-default-settings-for-firefox-globally/826219#826219
+#
+root@host:~# cat "$FF/defaults/pref/local-settings.js"
+pref("general.config.obscure_value", 0);
+pref("general.config.filename", "mozilla.cfg");
+#
+root@host:~# cat "$FF/mozilla.cfg"
+// this extra line is mandatory
+// https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig)
+lockPref("media.mp4.enabled", false);
+lockPref("media.webm.enabled", false);
+lockPref("media.mediasource.enabled", false);
+lockPref("media.mediasource.mp4.enabled", false);
+lockPref("media.mediasource.webm.enabled", false);
+lockPref("media.rdd-ffvpx.enabled", false);
+
+
+
+# Empêcher la mise à jour
+root@host:~# mkdir $FF/updates
+root@host:~# chmod 0 $FF/updates
+root@host:~# echo 'lockPref("app.update.auto", false);'\
+ >> "$FF/mozilla.cfg"
+
+
+# Donner les droits RW pour le groupe data pour le dossier FF
+root@host:~# addgroup data
+root@host:~# chown -R root:data /data
+root@host:~# chmod -R 750 /data
+
+# Ajouter les users dans le groupe data (si session en cours il faut se relogger)
+root@host:~# usermod -aG data lnj
+
+# Fermer toutes les éventuelles instances de FF en cours et faire une copie du profil en cours :
+root@host:~# $FF/$n/firefox -no-remote -P
