@@ -91,7 +91,7 @@ Description : sauvegarder une page complète (avec le CSS, les images, etc.) dan
 
 
 
-# Prevent auto-update
+# Prevent auto-update (voir aussi ff_global)
 # https://www.technipages.com/enable-disable-automatic-updates-in-firefox
 # Réglage about:config : lockPref("app.update.auto", false);
 
@@ -112,20 +112,14 @@ firefox -safe-mode
 
 # https://ubuntuforums.org/showthread.php?t=1907045
 
+# DL la dernière version de FF (voir aussi ff_global) NON ESR, NON beta, etc. :
 # get : https://ftp.mozilla.org/pub/firefox/releases/
-wget https://ftp.mozilla.org/pub/firefox/releases/62.0/linux-x86_64/fr/firefox-62.0.tar.bz2
-tar xjf firefox-62.0.tar.bz2
-mv firefox firefox-62
-firefox-62/firefox -no-remote -CreateProfile toto
-firefox-62/firefox -no-remote -P toto
-# ou : firefox-62/firefox -no-remote -profile $HOME/.mozilla/firefox/mzio7s0c.toto/
-
-# Automatisation pour DL la dernière version de FF (NON ESR, NON beta, etc.)
 R=https://ftp.mozilla.org ; NC=--no-check-certificate ; wget $R$( wget $NC -qO- $R$( wget $NC -qO- $R/pub/firefox/releases/ | grep -Eo "href=\"/pub.+/[0-9.]+/\"" | grep -Eo "/.+/" | sort -uV | tail -n -1 )linux-x86_64/fr/ | grep -Eo "href=\"/pub.+\.tar\.bz2\"" | grep -Eo "/.+\.tar\.bz2" )
 n=$( basename $( ls -1 firefox-*.tar.bz2 | sort -V | tail -n -1 ) ".tar.bz2" )
 tar xjf $n.tar.bz2
 rm $n.tar.bz2
 mv firefox $n
+#
 # Fermer toutes les éventuelles instances de FF en cours et faire une copie du profil en cours
 ./$n/firefox -no-remote -P
 # Attention : si on souhaite utiliser un profil existant, on ne pourra (officiellement) PAS l'utiliser à nouveau avec une version FF antérieure (c'est pourquoi il faut faire une copie avant)
@@ -150,7 +144,8 @@ https://support.mozilla.org/fr/kb/autoriser-bloquer-lecture-automatique-medias
 
 
 
-Désactiver la vidéo (restauration de vieux PC) :
+# Désactiver la vidéo (voir aussi ff_global) :
+# Objectif : restauration de vieux PC
 # Désactiver toutes les vidéos depuis FF (force à utiliser mpv) : 
 #  https://www-journeybytes-com.translate.goog/permanently-block-videos-firefox/?_x_tr_sl=auto&_x_tr_tl=fr&_x_tr_hl=fr
 # MEGA astuce : rendre ce réglage global et non modifiable
@@ -166,7 +161,8 @@ pref("general.config.filename", "mozilla.cfg");
 #
 # 2 - un nouveau fichier de configuration (lockPref empêche modification, il y a aussi : defaultPref et pref - voir lien pour plus d'explications)
 root@host:~# cat /usr/lib/firefox-esr/mozilla.cfg
-//
+// this extra line is mandatory
+// https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig
 lockPref("media.mp4.enabled", false);
 lockPref("media.webm.enabled", false);
 lockPref("media.mediasource.enabled", false);
@@ -176,7 +172,7 @@ lockPref("media.rdd-ffvpx.enabled", false);
 
 => tout profil qui utilise ce binaire se verra affecter ces réglages
 
-# Il est à priori possible de rendre l'addon global lui aussi (et ses réglages ?)
+# Il est possible de rendre l'addon global lui aussi et ses réglages : voir ff_global
 
 
 
