@@ -7,6 +7,16 @@ https://stackoverflow.com/questions/12251625/installing-firefox-extension-for-al
 lien qui pour le moment donne les dossiers cibles qui fonctionnent
 https://extensionworkshop.com/documentation/publish/distribute-sideloading/
 
+Les liens qui m'ont orienté vers la solution (que j'ai trouvé moi même par l'essai) :
+https://support.mozilla.org/fr/kb/personnaliser-firefox-fichier-policies-json
+https://github.com/gorhill/uBlock/releases
+https://github.com/gorhill/uBlock/wiki/Deploying-uBlock-Origin
+https://github.com/gorhill/uBlock/wiki/Deploying-uBlock-Origin:-configuration
+https://github.com/gorhill/uBlock/issues/2986
+https://www.reddit.com/r/uBlockOrigin/comments/vbzvkw/firefox_deployment_works_fine_adminsettings_just/
+https://groups.google.com/a/mozilla.org/g/enterprise/c/MXJnTq9MdVE
+https://forum.qubes-os.org/t/guide-automatically-install-extensions-and-configure-new-dispvm-firefox-profiles-with-arkenfox-user-js-and-policies/11786
+
 
 
 root@host:~# #ARCH=x86_64
