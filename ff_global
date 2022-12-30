@@ -61,7 +61,7 @@ uBlock0@raymondhill.net
 # Préparer pour installation pour le prochain démarrage de FF
 root@host:~# cp "$f" "${FF_ADDON}"/$ID.xpi
 #
-# Préparer configuration pour le prochain démarrage de FF
+# Préparer configuration pour le prochain démarrage de FF (voir plus de règles depuis github dédié)
 root@host:~# cat "$FF/distribution/policies.json"
 {
  "policies": {
@@ -73,6 +73,9 @@ root@host:~# cat "$FF/distribution/policies.json"
           "toOverwrite": {
             "filters": [
               "! To add to ublock rules",
+              "",
+              "! Pour Google consent, voir github dédié",
+              "",
               "! Comment supprimer la popup Connectez-vous à Youtube",
               "! https://www.malekal.com/comment-supprimer-la-popup-connectez-vous-a-youtube/",
               "www.youtube.com###dialog",
